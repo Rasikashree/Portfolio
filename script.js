@@ -38,26 +38,9 @@ function scrollToSection(id) {
     }
 }
 
-// Form submission handler
-function handleFormSubmit(event) {
-    event.preventDefault();
-    
-    const form = event.target;
-    const successMessage = document.getElementById('successMessage');
-    
-    // Show success message
-    successMessage.style.display = 'block';
-    
-    // Log form data (in a real app, you'd send this to a server)
-    const formData = new FormData(form);
-    console.log('Form submitted:', Object.fromEntries(formData));
-    
-    // Reset form and hide message after 3 seconds
-    setTimeout(() => {
-        form.reset();
-        successMessage.style.display = 'none';
-    }, 3000);
-}
+// Contact form submission via FormSubmit
+// The form now automatically sends emails to rasikashree1991@gmail.com
+// FormSubmit handles the email delivery
 
 // Animate skill bars on scroll
 function animateSkillBars() {

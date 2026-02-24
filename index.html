@@ -456,7 +456,13 @@
                     </div>
                 </div>
 
-                <form class="contact-form" id="contactForm" onsubmit="handleFormSubmit(event)">
+                <form class="contact-form" id="contactForm" action="https://formsubmit.co/rasikashree1991@gmail.com" method="POST">
+                    <!-- FormSubmit Configuration -->
+                    <input type="hidden" name="_subject" value="New Portfolio Contact Message!">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_template" value="table">
+                    <input type="text" name="_honey" style="display:none">
+                    
                     <div id="successMessage" class="success-message" style="display: none;">
                         ✓ Thank you! I'll get back to you soon.
                     </div>
