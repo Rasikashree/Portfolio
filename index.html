@@ -17,8 +17,10 @@
             <div class="nav-menu" id="navMenu">
                 <a onclick="scrollToSection('hero')" class="nav-link">Home</a>
                 <a onclick="scrollToSection('about')" class="nav-link">About</a>
-                <a onclick="scrollToSection('projects')" class="nav-link">Projects</a>
                 <a onclick="scrollToSection('skills')" class="nav-link">Skills</a>
+                <a onclick="scrollToSection('projects')" class="nav-link">Projects</a>
+                <a onclick="scrollToSection('achievements')" class="nav-link">Achievements</a>
+                <a onclick="scrollToSection('certifications')" class="nav-link">Certifications</a>
                 <a onclick="scrollToSection('contact')" class="nav-link-btn">Contact</a>
             </div>
 
@@ -112,8 +114,32 @@
                         <p>Major Projects</p>
                     </div>
                     <div class="stat">
-                        <h3>3</h3>
+                        <h3>5</h3>
                         <p>Certifications</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements Section -->
+    <section id="achievements" class="achievements">
+        <div class="achievements-container">
+            <h2 class="section-title">Achievements</h2>
+            <p class="section-subtitle">Hackathons and recognition</p>
+
+            <div class="achievements-grid">
+                <div class="achievement-card">
+                    <div class="achievement-icon">🏆</div>
+                    <h3>Kruu Hackathon</h3>
+                    <p class="achievement-meta">Feb 2026</p>
+                    <p class="achievement-detail">
+                        Developed RecoveryGuard AI, an AI-based post-surgery patient monitoring system with anomaly detection and real-time alerts.
+                    </p>
+                    <p class="achievement-detail">Received Participation and Citation Certificates.</p>
+                    <div class="achievement-certs">
+                        <button class="cert-view-btn achievement-cert-btn" data-cert-image="src/assets/Kruu 1.jpg" type="button">View Participation Certificate</button>
+                        <button class="cert-view-btn achievement-cert-btn" data-cert-image="src/assets/Kruu 2.jpg" type="button">View Citation Certificate</button>
                     </div>
                 </div>
             </div>
@@ -397,28 +423,59 @@
             <p class="section-subtitle">Professional credentials and continuous learning</p>
 
             <div class="certifications-grid">
-                <div class="cert-card">
-                    <div class="cert-icon">🌐</div>
-                    <h3>Introduction to Internet of Things</h3>
-                    <p class="cert-issuer">NPTEL Certificate</p>
-                    <p class="cert-score">Score: 64%</p>
-                    <p class="cert-date">2024</p>
+                <div class="cert-card" data-cert-image="src/assets/react.png" data-cert-pdf="src/assets/udemy-react.pdf">
+                    <div class="cert-card-content">
+                        <div class="cert-icon">⚛️</div>
+                        <span class="cert-badge">Udemy Certificate <br> Click</span>
+                        <h3>Hands On React JS From Beginner to Expert</h3>
+                        <p class="cert-issuer">Udemy Certificate</p>
+                        <p class="cert-score">Duration: 4.5 total hours</p>
+                        <p class="cert-date">Feb 16, 2026</p>
+                    </div>
                 </div>
 
-                <div class="cert-card">
-                    <div class="cert-icon">🐍</div>
-                    <h3>The Joy of Computing using Python</h3>
-                    <p class="cert-issuer">NPTEL Certificate</p>
-                    <p class="cert-score">Score: 71%</p>
-                    <p class="cert-date">2024</p>
+                <div class="cert-card" data-cert-image="src/assets/java.png" data-cert-pdf="src/assets/udemy-java.pdf">
+                    <div class="cert-card-content">
+                        <div class="cert-icon">☕</div>
+                        <span class="cert-badge">Udemy Certificate<br> Click</span>
+                        <h3>Java Mastery: Beginner's Guide and Full-Stack AI Projects</h3>
+                        <p class="cert-issuer">Udemy Certificate</p>
+                        <p class="cert-score">Duration: 7 total hours</p>
+                        <p class="cert-date">Jan 27, 2026</p>
+                    </div>
                 </div>
 
-                <div class="cert-card">
-                    <div class="cert-icon">☁️</div>
-                    <h3>AWS Cloud Practitioner Essentials</h3>
-                    <p class="cert-issuer">AWS Certificate</p>
-                    <p class="cert-score">Completed</p>
-                    <p class="cert-date">2025</p>
+                <div class="cert-card" data-cert-image="src/assets/AWS.jpg">
+                    <div class="cert-card-content">
+                        <div class="cert-icon">☁️</div>
+                        <span class="cert-badge">AWS Certificate <br> Click</span>
+                        <h3>AWS Cloud Practitioner Essentials</h3>
+                        <p class="cert-issuer">AWS Certificate</p>
+                        <p class="cert-score">Completed</p>
+                        <p class="cert-date">2025</p>
+                    </div>
+                </div>
+
+                <div class="cert-card" data-cert-image="src/assets/IOT.jpeg">
+                    <div class="cert-card-content">
+                        <div class="cert-icon">🌐</div>
+                        <span class="cert-badge">NPTEL Certificate <br> Click</span>
+                        <h3>Introduction to Internet of Things</h3>
+                        <p class="cert-issuer">NPTEL Certificate</p>
+                        <p class="cert-score">Score: 64%</p>
+                        <p class="cert-date">2024</p>
+                    </div>
+                </div>
+
+                <div class="cert-card" data-cert-image="src/assets/Python.jpeg">
+                    <div class="cert-card-content">
+                        <div class="cert-icon">🐍</div>
+                        <span class="cert-badge">NPTEL Certificate <br> Click</span>
+                        <h3>The Joy of Computing using Python</h3>
+                        <p class="cert-issuer">NPTEL Certificate</p>
+                        <p class="cert-score">Score: 71%</p>
+                        <p class="cert-date">2024</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -510,6 +567,13 @@
             </div>
         </div>
     </section>
+
+    <div id="certModal" class="cert-modal" aria-hidden="true">
+        <div class="cert-modal-content" role="dialog" aria-modal="true" aria-label="Certificate image preview">
+            <button class="cert-modal-close" type="button" aria-label="Close">✕</button>
+            <img class="cert-modal-image" src="" alt="Certificate preview" />
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
