@@ -521,9 +521,7 @@
                     <input type="hidden" name="_template" value="table">
                     <input type="text" name="_honey" style="display:none">
                     
-                    <div id="successMessage" class="success-message" style="display: none;">
-                        ✓ Thank you! I'll get back to you soon.
-                    </div>
+                    <div id="formStatus" class="success-message" style="display: none;" role="status" aria-live="polite"></div>
                     
                     <div class="form-group">
                         <input
@@ -573,6 +571,15 @@
         <div class="cert-modal-content" role="dialog" aria-modal="true" aria-label="Certificate image preview">
             <button class="cert-modal-close" type="button" aria-label="Close">✕</button>
             <img class="cert-modal-image" src="" alt="Certificate preview" />
+        </div>
+    </div>
+
+    <div id="emailPopup" class="email-popup" aria-hidden="true">
+        <div class="email-popup-content" role="dialog" aria-modal="true" aria-label="Contact form confirmation">
+            <button id="emailPopupClose" class="email-popup-close" type="button" aria-label="Close">✕</button>
+            <h3>Check Your Mail</h3>
+            <p>Your message was sent successfully. Please check your inbox.</p>
+            <button id="emailPopupOk" class="btn btn-primary" type="button">OK</button>
         </div>
     </div>
 

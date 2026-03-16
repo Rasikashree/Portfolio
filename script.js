@@ -38,9 +38,95 @@ function scrollToSection(id) {
     }
 }
 
-// Contact form submission via FormSubmit
-// The form now automatically sends emails to rasikashree1991@gmail.com
-// FormSubmit handles the email delivery
+// Contact form submission via FormSubmit AJAX (stays on page)
+const contactForm = document.getElementById('contactForm');
+const formStatus = document.getElementById('formStatus');
+const emailPopup = document.getElementById('emailPopup');
+const emailPopupClose = document.getElementById('emailPopupClose');
+const emailPopupOk = document.getElementById('emailPopupOk');
+
+function showEmailPopup() {
+    if (!emailPopup) {
+        return;
+    }
+    emailPopup.classList.add('is-open');
+    emailPopup.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeEmailPopup() {
+    if (!emailPopup) {
+        return;
+    }
+    emailPopup.classList.remove('is-open');
+    emailPopup.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+}
+
+if (emailPopupClose) {
+    emailPopupClose.addEventListener('click', closeEmailPopup);
+}
+
+if (emailPopupOk) {
+    emailPopupOk.addEventListener('click', closeEmailPopup);
+}
+
+if (emailPopup) {
+    emailPopup.addEventListener('click', (event) => {
+        if (event.target === emailPopup) {
+            closeEmailPopup();
+        }
+    });
+}
+
+if (contactForm) {
+    contactForm.addEventListener('submit', async (event) => {
+        event.preventDefault();
+
+        const submitButton = contactForm.querySelector('button[type="submit"]');
+        const originalButtonText = submitButton ? submitButton.textContent : '';
+
+        if (submitButton) {
+            submitButton.disabled = true;
+            submitButton.textContent = 'Sending...';
+        }
+
+        if (formStatus) {
+            formStatus.style.display = 'none';
+            formStatus.classList.remove('error');
+            formStatus.textContent = '';
+        }
+
+        try {
+            const formData = new FormData(contactForm);
+            const response = await fetch('https://formsubmit.co/ajax/rasikashree1991@gmail.com', {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    Accept: 'application/json'
+                }
+            });
+
+            if (!response.ok) {
+                throw new Error('Form submission failed');
+            }
+
+            contactForm.reset();
+            showEmailPopup();
+        } catch (error) {
+            if (formStatus) {
+                formStatus.textContent = 'Unable to send message right now. Please try again.';
+                formStatus.classList.add('error');
+                formStatus.style.display = 'block';
+            }
+        } finally {
+            if (submitButton) {
+                submitButton.disabled = false;
+                submitButton.textContent = originalButtonText;
+            }
+        }
+    });
+}
 
 // Animate skill bars on scroll
 function animateSkillBars() {
@@ -150,5 +236,6 @@ if (certModalClose) {
 document.addEventListener('keydown', (event) => {
     if (event.key === 'Escape') {
         closeCertModal();
+        closeEmailPopup();
     }
 });
